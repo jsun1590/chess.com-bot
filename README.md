@@ -1,4 +1,7 @@
 # chess.com-bot
+
+Disclosure: This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **I do not condone using this bot in public matches for the purpose of cheating.**
+
 Dependencies: https://stockfishchess.org/download/, https://chromedriver.chromium.org/downloads
 
 You need to download both binaries and put them in the project folder. The stockfish binary should be named "stockfish.exe" and the chrome driver binary should be named "chromedriver.exe".
