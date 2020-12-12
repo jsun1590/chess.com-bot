@@ -3,6 +3,9 @@ import chess
 import chess.engine
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from pywinauto import application
+from pywinauto import Desktop
+
 
 engine = chess.engine.SimpleEngine.popen_uci("stockfish.exe")
 board = chess.Board()
@@ -13,7 +16,6 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('window-size=1920x1480')
-
 with open("board.txt") as f:
     array = [i.split() for i in f]
 
@@ -23,11 +25,23 @@ url = "https://www.chess.com/play/computer"
 driver.get(url)
 input("Press any key to continue...")
 
+def open_chrome():
+    '''
+    THIS FUNCTION ASSURES THAT CHROME IS OPEN SO check_fen() CAN WORK PROBEBLY
+    '''
+    app = application.Application().connect(title_re =".*Chess.*")
+    app_dialog = app.top_window()
+
+    app_dialog.minimize()
+    app_dialog.restore()
+    
 
 def check_fen():
+    open_chrome()
     download = driver.find_element_by_class_name("download")
     download.click()
     time.sleep(2)
+    # print(len(driver.find_elements_by_class_name("form-input.input")), driver.find_elements_by_class_name("form-input.input"))
     form = driver.find_elements_by_class_name("form-input-input")[1]
     close = driver.find_element_by_css_selector(".icon-font-chess.x.icon-font-secondary")
     close.click()
