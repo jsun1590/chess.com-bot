@@ -3,8 +3,16 @@ import chess
 import chess.engine
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+import os
+import glob
 
-engine = chess.engine.SimpleEngine.popen_uci("stockfish.exe")
+running_script_directory = os.path.dirname(os.path.realpath(__file__))
+os.chdir(running_script_directory)
+for file in glob.glob("stockfish*"):
+    print("Found stockfish File Version",file)
+    stockfish_name = file
+
+engine = chess.engine.SimpleEngine.popen_uci(stockfish_name)
 board = chess.Board()
 limit = chess.engine.Limit(time=0.2)
 driver = webdriver.Chrome("chromedriver.exe")
