@@ -1,8 +1,17 @@
 # chess.com-bot
+# About
+Simple Chess.com bot made in Python with the Chess and Selenium library.
 
-Disclosure: This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **I do not condone using this bot in public matches for the purpose of cheating.**
+# Disclosure
+This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **I do not condone using this bot in public matches for the purpose of cheating.**
 
-Dependencies: https://stockfishchess.org/download/, https://chromedriver.chromium.org/downloads
+# Installation
+This script requires the Chess (https://pypi.org/project/chess/) and Selenium (https://pypi.org/project/selenium/) to run.
+## requirements.txt
+The required aforementioned libraries can be installed via `pip` through the command `pip3 install -r requirements.txt --user`
+## 3rd party binaries
+Stockfish: https://stockfishchess.org/download/
+Chrome Driver: https://chromedriver.chromium.org/downloads
 
 You need to download both binaries and put them in the project folder. The stockfish binary should be named "stockfish.exe" and the chrome driver binary should be named "chromedriver.exe".
 
