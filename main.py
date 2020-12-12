@@ -6,8 +6,22 @@ from selenium.webdriver.common.action_chains import ActionChains
 from pywinauto import application
 from pywinauto import Desktop
 
+import os
+import sys
+import glob
 
-engine = chess.engine.SimpleEngine.popen_uci("stockfish.exe")
+running_script_directory = os.path.dirname(os.path.realpath(__file__))
+os.chdir(running_script_directory)
+
+for file in glob.glob("stockfish*"):
+    print("Found Stockfish binary version",file.strip(".exe"))
+    stockfish_name = file
+try:
+    engine = chess.engine.SimpleEngine.popen_uci(stockfish_name)
+except:
+    print("No Stockfish binary found")
+    input("Press any key to exit.")
+    sys.exit()
 board = chess.Board()
 limit = chess.engine.Limit(time=0.2)
 driver = webdriver.Chrome("chromedriver.exe")
