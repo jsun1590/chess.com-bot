@@ -25,10 +25,10 @@ except:
 
 board = chess.Board()
 limit = chess.engine.Limit(time=0.2)
-driver = webdriver.Chrome("chromedriver.exe")
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
-
+chrome_options.add_argument("--log-level=3")
+driver = webdriver.Chrome("chromedriver.exe", options=chrome_options)
 with open("board.txt") as f:
     array = [i.split() for i in f]
 
@@ -47,27 +47,28 @@ def open_chrome():
     if not app_dialog.has_focus():
         app_dialog.set_focus()
 
-    
-
 def check_fen():
     open_chrome()
-    download = driver.find_element_by_class_name("download")
+    download = driver.find_element_by_css_selector("span.icon-font-chess.download")
     download.click()
-    time.sleep(2)
-
+    time.sleep(3)
     form = driver.find_elements_by_class_name("form-input-input")[1]
-    close = driver.find_element_by_css_selector(".icon-font-chess.x.icon-font-secondary")
+    fen = form.get_attribute("value")
+    close = driver.find_element_by_css_selector("span.icon-font-chess.x.icon-font-secondary")
     close.click()
-    return form.get_attribute("value")
+    time.sleep(3)
 
+    return fen
+        
 def find_loc(piece):
     for i, row in enumerate(array):
         for j, col in enumerate(row):
             if col == piece:
                 return [j+1, 8-i]
 
+board = chess.Board(check_fen())
 while not board.is_game_over():
-    board = chess.Board(check_fen())
+    
     piece_size = driver.find_element_by_css_selector(".layout-board.board").size["height"]/8
     
     result = engine.play(board, limit)
@@ -86,9 +87,17 @@ while not board.is_game_over():
             break
         except:
             pass
+        
     board.push(result.move)
-
-    time.sleep(3)
     print(board, "\n")
+
+    while True:
+        fen = check_fen()
+        if board == fen:
+            chess.Board(fen)
+            continue
+        else:
+            board = chess.Board(check_fen())
+            break
 
 
