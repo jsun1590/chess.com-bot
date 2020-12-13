@@ -8,7 +8,7 @@
  ### Contents:
   - [Disclosure](#disclosure)
   - [Requirements](#requirements)
-      - [Python Packages](python-packages)
+      - [Python Packages](#python-packages)
       - [Third Party Binaries](#third-party-binaries)
   - [Installation](#installation)
   - [Usage](#usage)
