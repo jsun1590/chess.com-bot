@@ -48,7 +48,6 @@ while not board.is_game_over():
     target = find_loc(str(result.move)[-2:])
 
     offset = [a - b for a, b in zip(target, origin)]
-    # print(origin, target)
     offset[0] *= piece_size
     offset[1] *= -piece_size
     
@@ -60,8 +59,15 @@ while not board.is_game_over():
             break
         except:
             pass
-    board.push(result.move)
+    
+    # Make GUI Responses to the promotion from the engine pick
+    if len(str(result.move)) > 4:
+        promotion_button = driver.find_element_by_class_name("promotion-piece.w" + str(result.move)[-1].lower())
+        promotion_button.click()
+        time.sleep(2)
 
+    board.push(result.move)
+    print("\n")
     time.sleep(3)
     
     board = chess.Board(check_fen())
