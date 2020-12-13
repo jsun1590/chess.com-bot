@@ -33,7 +33,7 @@
 
 ## Installation
 - Install required libraries via `pip` through the command `pip3 install -r requirements.txt --user`.
-- Install Third Part Binaries as mentioned at #Third Party Binaries(#third-party-binaries) .
+- Install Third Part Binaries as mentioned above.
 
 ## Usage
 - To use the bot, open main.py and wait until the site has loaded. Press play against computer and click continue until you are at the main game window. Navigate over to your Python window and press any key to start the bot.
