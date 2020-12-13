@@ -1,15 +1,24 @@
-# chess.com-bot
-# About
-Simple Chess.com bot made in Python with the Chess and Selenium library.
 
-# Disclosure
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com)<br><br>
+
+<div style="text-align:center">
+<a href="https://github.com/Panc4kes/chess.com-bot/stargazers"><img src="https://img.shields.io/github/stars/Panc4kes/chess.com-bot" alt="Stars Badge"/></a>
+<a href="https://github.com/Panc4kes/chess.com-bot/network/members"><img src="https://img.shields.io/github/forks/Panc4kes/chess.com-bot" alt="Forks Badge"/></a>
+<a href="https://github.com/Panc4kes/chess.com-bot/pulls"><img src="https://img.shields.io/github/issues-pr/Panc4kes/chess.com-bot" alt="Pull Requests Badge"/></a>
+<h1 align="center">Chess.com Bot</h1>
+<i>Simple Chess.com bot made in Python with the Chess and Selenium library.</i>
+</div>
+ 
+
+
+Disclosure
 This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **I do not condone using this bot in public matches for the purpose of cheating.**
 
-# Installation
+ Installation
 This script requires the Chess (https://pypi.org/project/chess/) and Selenium (https://pypi.org/project/selenium/) to run.
-## requirements.txt
+ requirements.txt
 The required aforementioned libraries can be installed via `pip` through the command `pip3 install -r requirements.txt --user`
-## 3rd party binaries
+ 3rd party binaries
 Stockfish: https://stockfishchess.org/download/
 Chrome Driver: https://chromedriver.chromium.org/downloads
 
