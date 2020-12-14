@@ -69,7 +69,6 @@ def find_loc(piece):
                 return [j+1, 8-i]
 
 initial_fen = check_fen()
-
 while not board.is_game_over():
     
     piece_size = driver.find_element_by_css_selector(".layout-board.board").size["height"]/8
@@ -90,13 +89,16 @@ while not board.is_game_over():
     while True:
         try:
             action_chains = ActionChains(driver)
-            action_chains.drag_and_drop_by_offset(next(origin_push), offset[0], offset[1]).click().perform()
+            action_chains.drag_and_drop_by_offset(next(origin_push), offset[0], offset[1]).perform()
             break
         except:
             pass
 
     if len(str(result.move)) == 5:
         promotion = driver.find_element_by_css_selector("div.promotion-piece." + fen.split()[1] + str(result.move)[-1].lower())
+        promotion.click()
+        
     board.push(result.move)
+    print(board, "\n")
 
     time.sleep(3)
