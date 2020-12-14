@@ -18,17 +18,18 @@
 ## Requirements
 
 #### Python Packages
-- This script requires Python packages given below to run
+- This script requires the below packages to run
 
-| Package |
+| Packages |
 | --- |
-| ` Chess ` | 
-| ` Selenium ` | 
+| [chess](https://pypi.org/project/chess/)
+| [pywinauto](https://pypi.org/project/pywinauto/) | 
+| [selenium](https://pypi.org/project/selenium/) | 
 
 #### Third Party Binaries
 
-- [Stockfish](https://stockfishchess.org/download/) ----> Move this file to root folder and rename as "stockfish.exe"
-- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move this file to root folder and rename as "chromedriver.exe"
+- [Stockfish](https://stockfishchess.org/download/) ----> Move the exe to project folder"
+- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move this file to project folder and rename as "chromedriver.exe" (if required)
 
 
 ## Installation
