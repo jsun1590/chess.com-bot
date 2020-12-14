@@ -13,11 +13,11 @@ running_script_directory = os.path.dirname(os.path.realpath(__file__))
 os.chdir(running_script_directory)
 
 for file in glob.glob("stockfish*"):
-    print("Found Stockfish binary version",file.strip(".exe"))
-    stockfish_name = file
+    print("Found Stockfish binary version",file.strip("stockfish_").strip(".exe"))
+    stockfish = file
 
 try:
-    engine = chess.engine.SimpleEngine.popen_uci(stockfish_name)
+    engine = chess.engine.SimpleEngine.popen_uci(stockfish)
 except:
     print("No Stockfish binary found")
     input("Press any key to exit.")
@@ -32,16 +32,18 @@ driver = webdriver.Chrome("chromedriver.exe", options=chrome_options)
 with open("board.txt") as f:
     array = [i.split() for i in f]
 
-#url = input("Enter a url\n> ")
+# url = input("Enter a url\n> ")
+# for pawn promotion testing
+# url = "https://www.chess.com/play/computer?fen=qkb3nr/ppppppPp/8/8/8/8/PPPPPPP1/RNBQKBNR%20w%20KQ%20-%200%201"
 url = "https://www.chess.com/play/computer"
 driver.get(url)
 input("Press any key to continue...")
 
 def open_chrome():
     '''
-    THIS FUNCTION ASSURES THAT CHROME IS OPEN SO check_fen() CAN WORK PROPERLY
+    Funtion makes sure that Chrome is open so that check_fen can work properly.
     '''
-    app = application.Application().connect(title_re =".*Chess.*")
+    app = application.Application().connect(title_re ="Play Chess.*")
     app_dialog = app.top_window()
 
     if not app_dialog.has_focus():
@@ -66,16 +68,21 @@ def find_loc(piece):
             if col == piece:
                 return [j+1, 8-i]
 
-board = chess.Board(check_fen())
+initial_fen = check_fen()
+
 while not board.is_game_over():
     
     piece_size = driver.find_element_by_css_selector(".layout-board.board").size["height"]/8
-    
+    while True:
+        fen = check_fen()
+        if board.fen() != fen or board.fen() == initial_fen:
+            board = chess.Board(fen)
+            break
+
     result = engine.play(board, limit)
     origin = find_loc(str(result.move)[:2])
-    target = find_loc(str(result.move)[-2:])
+    target = find_loc(str(result.move)[2:4])
     offset = [a - b for a, b in zip(target, origin)]
-    # print(origin, target)
     offset[0] *= piece_size
     offset[1] *= -piece_size
     
@@ -87,17 +94,9 @@ while not board.is_game_over():
             break
         except:
             pass
-        
+
+    if len(str(result.move)) == 5:
+        promotion = driver.find_element_by_css_selector("div.promotion-piece." + fen.split()[1] + str(result.move)[-1].lower())
     board.push(result.move)
-    print(board, "\n")
 
-    while True:
-        fen = check_fen()
-        if board == fen:
-            chess.Board(fen)
-            continue
-        else:
-            board = chess.Board(check_fen())
-            break
-
-
+    time.sleep(3)
