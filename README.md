@@ -28,8 +28,8 @@
 
 #### Third Party Binaries
 
-- [Stockfish](https://stockfishchess.org/download/) ----> Move the exe to project folder"
-- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move this file to project folder and rename as "chromedriver.exe" (if required)
+- [Stockfish](https://stockfishchess.org/download/) ----> Move the exe to project folder
+- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move thd dxd to project folder and rename as "chromedriver.exe" (if required)
 
 
 ## Installation
