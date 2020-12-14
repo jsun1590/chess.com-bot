@@ -13,7 +13,7 @@ running_script_directory = os.path.dirname(os.path.realpath(__file__))
 os.chdir(running_script_directory)
 
 for file in glob.glob("stockfish*"):
-    print("Found Stockfish binary version",file.strip("stockfish_").strip(".exe"))
+    print("Found Stockfish binary version", file.strip("stockfish_").strip(".exe"))
     stockfish = file
 
 try:
@@ -59,7 +59,7 @@ def check_fen():
     close = driver.find_element_by_css_selector("span.icon-font-chess.x.icon-font-secondary")
     close.click()
     time.sleep(3)
-
+    
     return fen
         
 def find_loc(piece):
