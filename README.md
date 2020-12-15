@@ -29,7 +29,7 @@
 #### Third Party Binaries
 
 - [Stockfish](https://stockfishchess.org/download/) ----> Move the exe to project folder
-- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move thd dxd to project folder and rename as "chromedriver.exe" (if required)
+- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move thd exe to project folder and rename as "chromedriver.exe" (if required)
 
 
 ## Installation
@@ -38,6 +38,4 @@
 
 ## Usage
 - To use the bot, open main.py and wait until the site has loaded. Press play against computer and click continue until you are at the main game window. Navigate over to your Python window and press any key to start the bot.
-- The bot currently cannot detect turn change; it plays a turn every 3 seconds. Detection will be implemented in a future update.
-- The bot does not currently support pawn promotions, but this feature will be implemented in a future update.
 # [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com)
