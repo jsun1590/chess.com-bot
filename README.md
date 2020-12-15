@@ -1,6 +1,7 @@
 <p align="center">
 <a href="https://github.com/Panc4kes/chess.com-bot/stargazers"><img src="https://img.shields.io/github/stars/Panc4kes/chess.com-bot" alt="Stars Badge"/></a>
 <a href="https://github.com/Panc4kes/chess.com-bot/network/members"><img src="https://img.shields.io/github/forks/Panc4kes/chess.com-bot" alt="Forks Badge"/></a>
+<a href="https://github.com/Panc4kes/chess.com-bot/issues"><img src="https://img.shields.io/github/issues/Panc4kes/chess.com-bot" alt="Issues Badge"/></a>
 <a href="https://github.com/Panc4kes/chess.com-bot/pulls"><img src="https://img.shields.io/github/issues-pr/Panc4kes/chess.com-bot" alt="Pull Requests Badge"/></a></p>
 <h1 align="center">Chess.com Bot</h1>
 <p align="center">Simple Chess.com bot made in Python with the Chess and Selenium library.</p>
@@ -29,7 +30,7 @@
 #### Third Party Binaries
 
 - [Stockfish](https://stockfishchess.org/download/) ----> Move the exe to project folder
-- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move thd exe to project folder and rename as "chromedriver.exe" (if required)
+- [Chrome Driver](https://chromedriver.chromium.org/downloads) ----> Move the exe to project folder and rename as "chromedriver.exe" (if required)
 
 
 ## Installation
