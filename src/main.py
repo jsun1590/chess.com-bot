@@ -85,14 +85,9 @@ while not board.is_game_over():
     offset[0] *= piece_size
     offset[1] *= -piece_size
     
-    origin_push = iter(driver.find_elements_by_class_name(f"square-{origin[0]}{origin[1]}"))
-    while True:
-        try:
-            action_chains = ActionChains(driver)
-            action_chains.drag_and_drop_by_offset(next(origin_push), offset[0], offset[1]).perform()
-            break
-        except:
-            pass
+    origin_push = driver.find_element_by_xpath(f"//div[contains(@class, 'piece') and contains(@class, 'square-{origin[0]}{origin[1]}')]")
+    action_chains = ActionChains(driver)
+    action_chains.drag_and_drop_by_offset(origin_push, offset[0], offset[1]).perform()
 
     if len(str(result.move)) == 5:
         promotion = driver.find_element_by_css_selector("div.promotion-piece." + fen.split()[1] + str(result.move)[-1].lower())
