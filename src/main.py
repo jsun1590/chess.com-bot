@@ -8,6 +8,7 @@ import time
 import os
 import sys
 import glob
+from get_fen import get_fen
 
 running_script_directory = os.path.dirname(os.path.realpath(__file__))
 os.chdir(running_script_directory)
@@ -37,7 +38,6 @@ with open("board.txt") as f:
 # url = "https://www.chess.com/play/computer?fen=qkb3nr/ppppppPp/8/8/8/8/PPPPPPP1/RNBQKBNR%20w%20KQ%20-%200%201"
 url = "https://www.chess.com/play/computer"
 driver.get(url)
-input("Press any key to continue...")
 
 def open_chrome():
     '''
@@ -49,18 +49,11 @@ def open_chrome():
     if not app_dialog.has_focus():
         app_dialog.set_focus()
 
-def check_fen():
+def check_fen(extension):
     open_chrome()
-    download = driver.find_element_by_css_selector("span.icon-font-chess.download")
-    download.click()
-    time.sleep(3)
-    form = driver.find_elements_by_class_name("form-input-input")[1]
-    fen = form.get_attribute("value")
-    close = driver.find_element_by_css_selector("span.icon-font-chess.x.icon-font-secondary")
-    close.click()
-    time.sleep(3)
+    base = get_fen(driver)
+    return f"{base} {extension}"
     
-    return fen
         
 def find_loc(piece):
     for i, row in enumerate(array):
@@ -68,12 +61,27 @@ def find_loc(piece):
             if col == piece:
                 return [j+1, 8-i]
 
-initial_fen = check_fen()
+
+color = input("Whose turn is it right now? Choices are 'w' for white; 'b' for black\n> ")
+print("\nCan the white king castle?\nk for king's side; q for queen's side; - for neither")
+castle_w = input("Choices are 'kq', 'k', 'q', or '-'\n> ").upper()
+
+print("\nCan the black king castle?\nk for king's side; q for queen's side; - for neither")
+castle_b = input("Choices are 'kq', 'k', 'q', or '-'\n> ").lower()
+
+print("\nWhat is the en passant target square in algebraic notation?")
+en_passant = input("If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
+half_move = input("\nWhat is the number of half moves? Put '0' if you are not sure.\n> ")
+full_move = input("\nWhat is the number of full moves? Put 1' if you are not sure.\n> ")
+
+
+initial_fen = check_fen(f"{color} {castle_w}{castle_b} {en_passant} {half_move} {full_move}")
+print(initial_fen, "\n")
 while not board.is_game_over():
-    
     piece_size = driver.find_element_by_css_selector(".layout-board.board").size["height"]/8
     while True:
-        fen = check_fen()
+        fen = check_fen(board.fen().split(" ", 1)[1])
+        print(fen, "\n")
         if board.fen() != fen or board.fen() == initial_fen:
             board = chess.Board(fen)
             break
