@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
 
 def get_fen(driver):
     fen = ""
