@@ -36,8 +36,9 @@ Currently the script will only work on Windows. There are plans to port it over 
 
 
 ## Installation
+- Clone this repository via `git clone https://github.com/jsun1590/chess.com-bot.git`
 - Install required libraries via `pip` through the command `pip3 install -r requirements.txt --user`.
-- Install Third Part Binaries as mentioned above.
+- Install Third Part Binaries as mentioned above into the `src` folder.
 
 ## Usage
 - To use the bot, open main.py and wait until the site has loaded. Press play against computer and click continue until you are at the main game window. Navigate over to your Python window and press any key to start the bot.
