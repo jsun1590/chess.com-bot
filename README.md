@@ -16,7 +16,7 @@ Currently the script will only work on Windows. There are plans to port it over 
   - [Installation](#installation)
   - [Usage](#usage)
 ## Disclosure
-- This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **This bot will not work public matches.**
+- This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **This bot will not work in public matches, and I do not condone cheating thereof.**
 
 ## Requirements
 
