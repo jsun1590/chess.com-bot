@@ -1,8 +1,8 @@
 <p align="center">
-<a href="https://github.com/Panc4kes/chess.com-bot/stargazers"><img src="https://img.shields.io/github/stars/Panc4kes/chess.com-bot" alt="Stars Badge"/></a>
-<a href="https://github.com/Panc4kes/chess.com-bot/network/members"><img src="https://img.shields.io/github/forks/Panc4kes/chess.com-bot" alt="Forks Badge"/></a>
-<a href="https://github.com/Panc4kes/chess.com-bot/issues"><img src="https://img.shields.io/github/issues/Panc4kes/chess.com-bot" alt="Issues Badge"/></a>
-<a href="https://github.com/Panc4kes/chess.com-bot/pulls"><img src="https://img.shields.io/github/issues-pr/Panc4kes/chess.com-bot" alt="Pull Requests Badge"/></a></p>
+<a href="https://github.com/jsun1590/chess.com-bot/stargazers"><img src="https://img.shields.io/github/stars/jsun1590/chess.com-bot" alt="Stars Badge"/></a>
+<a href="https://github.com/jsun1590/chess.com-bot/network/members"><img src="https://img.shields.io/github/forks/jsun1590/chess.com-bot" alt="Forks Badge"/></a>
+<a href="https://github.com/jsun1590/chess.com-bot/issues"><img src="https://img.shields.io/github/issues/jsun1590/chess.com-bot" alt="Issues Badge"/></a>
+<a href="https://github.com/jsun1590/chess.com-bot/pulls"><img src="https://img.shields.io/github/issues-pr/jsun1590/chess.com-bot" alt="Pull Requests Badge"/></a></p>
 <h1 align="center">Chess.com Bot</h1>
 <p align="center">Simple Chess.com bot made in Python with the Chess and Selenium library.</p>
 
