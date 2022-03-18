@@ -77,7 +77,8 @@ full_move = input("\nWhat is the number of full moves? Put 1' if you are not sur
 initial_fen = check_fen(f"{color} {castle_w}{castle_b} {en_passant} {half_move} {full_move}")
 print(initial_fen, "\n")
 while not board.is_game_over():
-    piece_size = driver.find_element_by_css_selector(".layout-board.board").size["height"]/8
+    piece_size = driver.find_element_by_css_selector("#board-layout-chessboard").size["height"]/8
+    print(piece_size)
     while True:
         fen = check_fen(board.fen().split(" ", 1)[1])
         print(fen, "\n")
