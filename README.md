@@ -6,6 +6,8 @@
 <h1 align="center">Chess.com Bot</h1>
 <p align="center">Simple Chess.com bot made in Python with the Chess and Selenium library.</p>
 
+Currently the script will only work on Windows. There are plans to port it over to Linux.
+
  ### Contents:
   - [Disclosure](#disclosure)
   - [Requirements](#requirements)
@@ -14,7 +16,7 @@
   - [Installation](#installation)
   - [Usage](#usage)
 ## Disclosure
-- This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **I do not recommend using this bot in public matches for the purpose of cheating.**
+- This project is created purely with educational and research purposes in mind. Please only use this bot to play against the computer. **This bot will not work public matches.**
 
 ## Requirements
 
