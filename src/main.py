@@ -90,11 +90,11 @@ while en_passant != "-" and not is_valid_notation(en_passant):
     en_passant = input("Invalid argument. If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
 
 half_move = input("\nWhat is the number of half moves? Put '0' if you are not sure.\n> ")
-while not str.isdigit(half_move):
+while not str.isdigit(half_move) or int(half_move) < 0:
     half_move = input("Invalid number. Put '0' if you are not sure.\n> ")
 
 full_move = input("\nWhat is the number of full moves? Put '1' if you are not sure.\n> ")
-while not str.isdigit(full_move):
+while not str.isdigit(full_move) or int(half_move) < 0:
     full_move = input("Invalid number. Put '1' if you are not sure.\n> ")
 
 
