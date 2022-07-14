@@ -60,18 +60,42 @@ def find_loc(piece):
             if col == piece:
                 return [j+1, 8-i]
 
+def is_valid_notation(string):
+    if len(string) != 2:
+        return False
+    if string[0] not in ["a", "b", "c", "d", "e", "f", "g", "h"]:
+        return False
+    if string[1] not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+        return False
+    return True
 
-color = input("Whose turn is it right now? Choices are 'w' for white; 'b' for black\n> ")
+
+color = input("Whose turn is it right now? Choices are 'w' for white; 'b' for black\n> ").lower()
+while color not in ["w", "b"]:
+    color = input("Invalid choice. Choices are 'w' for white; 'b' for black\n> ").lower()
+
 print("\nCan the white king castle?\nk for king's side; q for queen's side; - for neither")
 castle_w = input("Choices are 'kq', 'k', 'q', or '-'\n> ").upper()
+while castle_w not in ["KQ", "K", "Q", "-"]:
+    castle_w = input("Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ").upper()
 
 print("\nCan the black king castle?\nk for king's side; q for queen's side; - for neither")
 castle_b = input("Choices are 'kq', 'k', 'q', or '-'\n> ").lower()
+while castle_b not in ["kq", "k", "q", "-"]:
+    castle_b = input("Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ").lower()
 
 print("\nWhat is the en passant target square in algebraic notation?")
 en_passant = input("If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
+while en_passant != "-" and not is_valid_notation(en_passant):
+    en_passant = input("Invalid argument. If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
+
 half_move = input("\nWhat is the number of half moves? Put '0' if you are not sure.\n> ")
-full_move = input("\nWhat is the number of full moves? Put 1' if you are not sure.\n> ")
+while not str.isdigit(half_move):
+    half_move = input("Invalid number. Put '0' if you are not sure.\n> ")
+
+full_move = input("\nWhat is the number of full moves? Put '1' if you are not sure.\n> ")
+while not str.isdigit(full_move):
+    full_move = input("Invalid number. Put '1' if you are not sure.\n> ")
 
 
 initial_fen = check_fen(f"{color} {castle_w}{castle_b} {en_passant} {half_move} {full_move}")
