@@ -69,33 +69,39 @@ def is_valid_notation(string):
         return False
     return True
 
+def validate_input(i, err, func, ul = ""):
+    '''
+    Ensures input is valid against a format.
+    '''
+    while func(i):
+        if ul == "u":
+            i = input(err).upper()
+        elif ul == "l":
+            i = input(err).lower()
+        else:
+            i = input(err)
+
 
 color = input("Whose turn is it right now? Choices are 'w' for white; 'b' for black\n> ").lower()
-while color not in ["w", "b"]:
-    color = input("Invalid choice. Choices are 'w' for white; 'b' for black\n> ").lower()
+validate_input(color, "Invalid choice. Choices are 'w' for white; 'b' for black\n> ", lambda x: x not in ["w", "b"], "l")
 
 print("\nCan the white king castle?\nk for king's side; q for queen's side; - for neither")
 castle_w = input("Choices are 'kq', 'k', 'q', or '-'\n> ").upper()
-while castle_w not in ["KQ", "K", "Q", "-"]:
-    castle_w = input("Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ").upper()
+validate_input(castle_w, "Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ", lambda x: x not in ["KQ", "K", "Q", "-"], "u")
 
 print("\nCan the black king castle?\nk for king's side; q for queen's side; - for neither")
 castle_b = input("Choices are 'kq', 'k', 'q', or '-'\n> ").lower()
-while castle_b not in ["kq", "k", "q", "-"]:
-    castle_b = input("Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ").lower()
+validate_input(castle_b, "Invalid choice. Choices are 'kq', 'k', 'q', or '-'\n> ", lambda x: x not in ["kq", "k", "q", "-"], "l")
 
 print("\nWhat is the en passant target square in algebraic notation?")
 en_passant = input("If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
-while en_passant != "-" and not is_valid_notation(en_passant):
-    en_passant = input("Invalid argument. If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ").lower()
+validate_input(en_passant, "Invalid argument. If a pawn has just made a two-square move, this is origin square.\nIf there is no en passant or you are not sure, put '-'.\n> ", lambda x: x != "-" and not is_valid_notation(x), "l")
 
 half_move = input("\nWhat is the number of half moves? Put '0' if you are not sure.\n> ")
-while not str.isdigit(half_move) or int(half_move) < 0:
-    half_move = input("Invalid number. Put '0' if you are not sure.\n> ")
+validate_input(half_move, "Invalid number. Put '0' if you are not sure.\n> ", lambda x: not str.isdigit(x) or int(x) < 0, "")
 
 full_move = input("\nWhat is the number of full moves? Put '1' if you are not sure.\n> ")
-while not str.isdigit(full_move) or int(half_move) < 0:
-    full_move = input("Invalid number. Put '1' if you are not sure.\n> ")
+validate_input(full_move, "Invalid number. Put '0' if you are not sure.\n> ", lambda x: not str.isdigit(x) or int(x) < 0, "")
 
 
 initial_fen = check_fen(f"{color} {castle_w}{castle_b} {en_passant} {half_move} {full_move}")
